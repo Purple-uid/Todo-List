@@ -51,6 +51,7 @@ function App() {
       <Message
        messages={messages} 
        onDelete={deleteMessage}/>
+       <h1>я изменил</h1>
     </div>
   )
 }
