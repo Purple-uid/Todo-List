@@ -9,8 +9,8 @@ function Input() {
 
   const handleAdd = () => {
     if (inputValue.trim() !== "") {
-      addMessage(inputValue); // Передаем только строку
-      setInputValue(""); // Очищаем поле
+      addMessage(inputValue);
+      setInputValue("");
       focusRef.current?.focus();
     }
   };
@@ -21,11 +21,9 @@ function Input() {
         <input
           className="inputField"
           ref={focusRef}
+          value={inputValue}
           onKeyDown={(e) => e.key === "Enter" && handleAdd()}
-          onChange={(e) => {
-            if (e.target.value.trim() === "") return;
-            setInputValue(e.target.value);
-          }}
+          onChange={(e) => setInputValue(e.target.value)}
           placeholder="Text"
           type="text"
         />
