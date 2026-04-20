@@ -1,41 +1,40 @@
-import { useState, useRef } from 'react'
-import type { InputProps } from '../../types/types'
-import './InputStyle.css'
+import { useState, useRef } from "react";
+import { useTodoStore } from "../../store/todoStore";
+import "./InputStyle.css";
 
-function Input({ addInputMes }: InputProps) {
-    const [ text, setText ] = useState('')
-    const focusRef = useRef<HTMLInputElement>(null)
+function Input() {
+  const [inputValue, setInputValue] = useState("");
+  const addMessage = useTodoStore((state) => state.addMessage);
+  const focusRef = useRef<HTMLInputElement>(null);
 
-    const hendelAdd = () => {
-        if(text.trim() === '') return
-        addInputMes(text)
-        setText('')
-        focusRef.current?.focus()
+  const handleAdd = () => {
+    if (inputValue.trim() !== "") {
+      addMessage(inputValue); // Передаем только строку
+      setInputValue(""); // Очищаем поле
+      focusRef.current?.focus();
     }
+  };
 
-    const enterKey = (e: any) => {
-        if (e.key === 'Enter') {
-            hendelAdd()
-        }
-    }
-
-    return (
-        <div>
-            <div className='inputWrapper'>
-                <input 
-                    className='inputField'
-                    ref={focusRef}
-                    onKeyDown={enterKey}
-                    onChange={(e) => setText(e.target.value)}
-                    value={text}
-                    placeholder="Text"
-                    type="text" />
-                <button
-                 className='addBtn' 
-                 onClick={hendelAdd}>Add</button>
-            </div>
-        </div>
-    )
+  return (
+    <div>
+      <div className="inputWrapper">
+        <input
+          className="inputField"
+          ref={focusRef}
+          onKeyDown={(e) => e.key === "Enter" && handleAdd()}
+          onChange={(e) => {
+            if (e.target.value.trim() === "") return;
+            setInputValue(e.target.value);
+          }}
+          placeholder="Text"
+          type="text"
+        />
+        <button className="addBtn" onClick={handleAdd}>
+          Add
+        </button>
+      </div>
+    </div>
+  );
 }
 
-export default Input
+export default Input;

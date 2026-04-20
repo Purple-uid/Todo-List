@@ -1,36 +1,36 @@
 .inputWrapper {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
 }
 
 .inputField {
-    flex: 1;
-    height: 44px;
-    padding: 0 16px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-    transition: border-color 0.2s;
+  flex: 1;
+  height: 44px;
+  padding: 0 16px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
 
-    &:focus {
-        border-color: #333;
-    }
+  &:focus {
+    border-color: #333;
+  }
 }
 
 .addBtn {
-    height: 44px;
-    padding: 0 20px;
-    background: #000;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: opacity 0.2s;
+  height: 44px;
+  padding: 0 20px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.2s;
 
-    &:hover {
-        opacity: 0.8;
-    }
+  &:hover {
+    opacity: 0.8;
+  }
 }
