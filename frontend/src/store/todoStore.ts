@@ -12,7 +12,7 @@ interface TodoStore {
   deleteMessage: (id: number) => Promise<void>;
 }
 
-const API = "stunning-serenity-production-34e4.up.railway.app"
+const API = "https://stunning-serenity-production-34e4.up.railway.app/api/todos"
 
 export const useTodoStore = create<TodoStore>(
     (set) => ({
