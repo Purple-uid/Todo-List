@@ -38,8 +38,12 @@ export const useTodoStore = create<TodoStore>(
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: text }),
           });
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
           const newTodo = await response.json();
-          
           set((state) => ({
             messages: [...state.messages, { id: newTodo.id, text: newTodo.text }],
           }));
@@ -54,11 +58,13 @@ export const useTodoStore = create<TodoStore>(
             method: "DELETE",
           });
           
-          if (response.ok) {
-            set((state) => ({
-              messages: state.messages.filter((i) => i.id !== id),
-            }));
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
           }
+          
+          set((state) => ({
+            messages: state.messages.filter((i) => i.id !== id),
+          }));
         } catch (error) {
           console.error("Ошибка при удалении задачи:", error);
         }

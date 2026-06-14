@@ -8,7 +8,7 @@ function Message() {
 
   return (
     <div className="messageList">
-      {messages.map((mas) => (
+      {(messages || []).map((mas) => (
         <div className="messageItem" key={mas.id}>
           <p className="messageText">{mas.text}</p>
           <button className="deleteBtn" onClick={() => deleteMessage(mas.id)}>
