@@ -5,6 +5,8 @@
 }
 
 body {
-  background: #f5f5f5;
-  font-family: system-ui, sans-serif;
+  background: #0f0f0f;
+  font-family: "JetBrains Mono", monospace;
+  color: #ffffff;
+  min-height: 100vh;
 }
